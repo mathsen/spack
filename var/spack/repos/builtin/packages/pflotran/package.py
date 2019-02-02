@@ -27,6 +27,8 @@ class Pflotran(AutotoolsPackage):
     depends_on('petsc@xsdk-0.2.0+hdf5+metis', when='@xsdk-0.2.0')
     depends_on('petsc@3.8.0:+hdf5+metis', when='@xsdk-0.3.0')
 
+    patch('petsc-master-jan2019.diff', when='@develop')
+
     @property
     def parallel(self):
         return (self.spec.satisfies('@develop') or
